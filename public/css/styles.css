@@ -1,0 +1,17 @@
+ion-icon {
+    visibility: hidden
+}
+
+.hydrated {
+    visibility: inherit
+}
+
+html,
+body,
+section {
+    font-family: "Montserrat", sans-serif;
+}
+
+.relative {
+    background-color: #0079FF;
+}
