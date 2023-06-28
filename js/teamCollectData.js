@@ -1,8 +1,9 @@
 
-//http://127.0.0.1:5000/team/listar_team
-//json/team.json
+//http://127.0.0.1:5000/team/listar_team local
+//json/team.json datos por archivo
+//https://api.vacunarg.site  remoto
 async function getData(){
-await fetch('http://127.0.0.1:5000/team/listar_team',{
+await fetch('https://api.vacunarg.site/team/listar_team',{
   headers: {
             'Access-Control-Allow-Origin': '*'
           }
