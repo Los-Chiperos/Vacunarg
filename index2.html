@@ -274,7 +274,11 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
     var name = document.getElementById("name").value;
     var surname = document.getElementById("surname").value;
     var cuil = document.getElementById("cuil").value;
-    var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+    var fechaNacimientoRaw = document.getElementById("fechaNacimiento").value;
+var parts = fechaNacimientoRaw.split('/');
+var fechaNacimiento = new Date(parts[2], parts[1] - 1, parts[0]);
+fechaNacimiento = fechaNacimiento.toISOString().split('T')[0];
+
     var loteVacuna = document.getElementById("loteVacuna").value;
     var fechaAplicacion = document.getElementById("fechaAplicacion").value;
     var centroSalud = document.getElementById("centroSalud").value;
