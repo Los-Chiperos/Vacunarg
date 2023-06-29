@@ -280,6 +280,8 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
     var centroSalud = document.getElementById("centroSalud").value;
     var vacuna = document.getElementById("vacuna").value;
     var dosis = document.getElementById("dosis").value;
+
+    console.log('Preparing to send data to server...'); // 1. Log before sending data
   
     if(!isValidCuil(cuil)){
       document.getElementById("cuilError").classList.remove("hidden");
@@ -304,8 +306,12 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
         lote_vacuna: loteVacuna
       })
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log('Response received from server: ', response); // 2. Log raw response
+      return response.json();
+    })
     .then(data => {
+      console.log('Parsed response data: ', data); // 3. Log parsed data
       if (data.success) {
         Swal.fire({
           title: 'Éxito!',
@@ -317,8 +323,6 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
             location.reload();
           }
         })
-        console.log('Success:', data);
-        console.log(error);
       } else {
         Swal.fire({
           title: 'Error!',
@@ -329,7 +333,7 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error:', error); // 4. Log any errors
       Swal.fire({
         title: 'Error!',
         text: 'Ocurrió un error al registrar la vacuna.',
@@ -343,7 +347,8 @@ Al registrarte, estarás contribuyendo a frenar la propagación del virus y a sa
     var re = /^([20|23|24|27]{2})-([0-9]{8})-([0-9]{1})$/;
     return re.test(cuil);
   }
-  </script>
+</script>
+
 
 
 
