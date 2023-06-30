@@ -21,8 +21,8 @@ function display(item) {
 
 const articule = `
 <div>
-          <div class="relative pb-56 mb-4 rounded shadow lg:pb-64">
-            <img class="absolute object-cover w-full h-full rounded"
+          <div class=" hover:scale-105 duration 500 relative pb-56 mb-4 rounded shadow lg:pb-64">
+            <img class="absolute object-cover transition duration-300 grayscale hover:grayscale-0 w-full h-full rounded-full"
               src=${item.imgurl}
               alt="Person" />
           </div>
