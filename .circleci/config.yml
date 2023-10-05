@@ -24,7 +24,7 @@ jobs:
           command: ssh usuario@34.176.113.213 "sudo docker stop vacunarg_container || true && docker rm vacunarg_container || true"
       - run: 
           name: Start Docker Container on Remote Host
-          command: ssh usuario@34.176.113.213 "sudo docker run -d --name vacunarg_container -p 80:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
+          command: ssh usuario@34.176.113.213 "sudo docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
 
 workflows:
   version: 2
