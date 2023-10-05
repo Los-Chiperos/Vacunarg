@@ -5,7 +5,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "3a:81:74:61:3b:6d:2e:e2:e8:42:5a:a7:66:b9:6e:5e"
+            - "34:52:7e:df:1c:2b:b6:52:44:c1:bf:63:da:a4:a9:83"
       - checkout
       - run: 
           name: Docker Login
@@ -18,13 +18,13 @@ jobs:
           command: docker push $DOCKER_USER/vacunarg:$CIRCLE_SHA1
       - run: 
           name: Pull Docker Image on Remote Host
-          command: ssh nicolas@20.226.108.27 "docker pull $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
+          command: ssh usuario@34.176.113.213 "docker pull $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
       - run: 
           name: Stop and Remove Old Docker Container if Exists
-          command: ssh nicolas@20.226.108.27 "docker stop vacunarg_container || true && docker rm vacunarg_container || true"
+          command: ssh usuario@34.176.113.213 "docker stop vacunarg_container || true && docker rm vacunarg_container || true"
       - run: 
           name: Start Docker Container on Remote Host
-          command: ssh nicolas@20.226.108.27 "docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
+          command: ssh usuario@34.176.113.213 "docker run -d --name vacunarg_container -p 8081:80 $DOCKER_USER/vacunarg:$CIRCLE_SHA1"
 
 workflows:
   version: 2
